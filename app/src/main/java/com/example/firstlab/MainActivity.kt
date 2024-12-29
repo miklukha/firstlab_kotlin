@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.firstlab.services.CalculatorService
 import com.example.firstlab.ui.calculator1.Calculator1Screen
 import com.example.firstlab.ui.calculator2.Calculator2Screen
 import com.example.firstlab.ui.entry.EntryScreen
 
+// можливі роутери
 enum class Routes {
     MAIN_SCREEN,
     CALCULATOR_1,
@@ -27,30 +27,32 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            // виклик "навігаціного контролера"
             val navController = rememberNavController()
-            val calculatorService = CalculatorService()
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                 NavHost(
                     navController = navController,
+                    // екран за замовчуванням
                     startDestination = Routes.MAIN_SCREEN.name,
                     modifier = Modifier.padding(innerPadding)
                 ) {
                     composable(route = Routes.MAIN_SCREEN.name) {
                         EntryScreen(
+                            // навігація на різні екрани
                             onCalculator1Navigate = { navController.navigate(route = Routes.CALCULATOR_1.name) },
                             onCalculator2Navigate = { navController.navigate(route = Routes.CALCULATOR_2.name) },
                         )
                     }
                     composable(route = Routes.CALCULATOR_1.name) {
                         Calculator1Screen(
+                            // повернення на головний екран
                             goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name) },
-                            calculatorService = calculatorService
                         )
                     }
                     composable(route = Routes.CALCULATOR_2.name) {
                         Calculator2Screen(
-                            goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name) },
-                            calculatorService = calculatorService
+                            // повернення на головний екран
+                            goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name) }
                         )
                     }
                 }

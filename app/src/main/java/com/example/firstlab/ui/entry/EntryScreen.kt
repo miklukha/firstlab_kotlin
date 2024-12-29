@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.firstlab.ui.theme.Blue
 import com.example.firstlab.ui.theme.Purple40
 
 @Composable
@@ -33,7 +32,7 @@ fun EntryScreen(
             modifier = Modifier
                 .padding(8.dp)
                 .size(width = 300.dp, height = 60.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Blue)
+            colors = ButtonDefaults.buttonColors(containerColor = Purple40)
         ) {
             Text(
                 text = "Завдання 1",
@@ -45,7 +44,7 @@ fun EntryScreen(
             modifier = Modifier
                 .padding(8.dp)
                 .size(width = 300.dp, height = 60.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Blue)
+            colors = ButtonDefaults.buttonColors(containerColor = Purple40)
         ) {
             Text(
                 text = "Завдання 2",
